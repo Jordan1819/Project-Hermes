@@ -20,7 +20,7 @@
 |-------|-------------|
 | Frontend | HTML, CSS, JavaScript |
 | Backend | PHP (running on Apache via XAMPP) |
-| Database | MySQL / MariaDB |
+| Database | MySQL |
 | Cloud Integration | Google Sheets / Google Docs API |
 | Version Control | Git + GitHub |
 
