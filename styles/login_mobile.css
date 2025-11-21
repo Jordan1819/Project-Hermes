@@ -1,0 +1,33 @@
+@media (max-width: 600px) {
+
+header {
+    font-size: 1.5rem;
+}
+
+#headerSubtitle {
+    display: none;
+}
+
+#headerIconLeft {
+    visibility: hidden;
+}
+
+#headerIconRight {
+    visibility: hidden;
+}
+
+#loginForm {
+    width: 60%;
+    gap: 10px;
+}
+
+#registerForm {
+    width: 60%;
+    gap: 10px;
+}
+
+
+
+
+    
+}

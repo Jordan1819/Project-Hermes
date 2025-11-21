@@ -1,6 +1,7 @@
 // Global variables
 let btnClear = document.getElementById('btnClear');
 let btnSave = document.getElementById('btnSave');
+let btnLogout = document.getElementById('btnLogout');
 let textArea = document.getElementById('mainTextArea');
 const WEBAPP_URL = 'https://script.google.com/macros/s/AKfycbz4g9RQM-5JpeNXjnsrLwjMfoOuPE6nSA7GyszeRuTC3dtZjhmV2EXr9NNr63Fj8iZTmA/exec';
 
@@ -23,4 +24,25 @@ btnSave.addEventListener('click', function() {
     });
     // Clear text area after saving 
     textArea.value = '';
+});
+
+// Logout button functionality
+btnLogout.addEventListener('click', async () => {
+    console.log('Logout button clicked'); //test
+    try {
+        const res = await fetch('server/logout.php', {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {'Content-Type':'application/json'}
+        });
+        const data = await res.json();
+        console.log('Server response: ', data);
+        if (data.ok) {
+            window.location = 'login_form.php';
+        } else {
+            alert('Logout failed');
+        }
+    } catch(err) {
+        console.error('Logout error:', err);
+    }
 });

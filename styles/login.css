@@ -30,58 +30,53 @@ body {
     background: linear-gradient(to bottom, skyblue, royalblue);
 }
 
-#mainContent {
-    flex: 1;
-    padding: 10px;
-    margin: 0 auto;
-}
-
-#mainTextArea {
-    max-height: 550px;
-    margin-top: 20px;
-}
-
-#buttonSection {
+#authorizationForm {
     display: flex;
-    gap: 20px;              /* spacing between buttons */
-    justify-content: center; /* center the group */
-    margin-top: 15px;
-}
-
-#buttonSection button {
-    background-color: goldenrod;
-    color: white;
-    font-size: 1.2rem;
-    border-radius: 5px;
-    transition: transform 0.3s;
-    border: 1px solid white;
-    padding: 5px 15px;
-}
-
-#buttonSection button:hover {
-    transform: scale(1.2);
-}
-
-#btnLogout {
-    background-color: goldenrod;
-    padding: 5px 5px;
-    color: white;
-    font-size: 1rem;
-    border-radius: 5px;
-    transition: transform 0.3s;
-    border: 1px solid white;
-}
-
-#extraButtonSection {
-    display: flex;
-    margin-top: auto;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-bottom: 10px;
+    gap: 40px;
 }
 
-#btnLogout:hover {
+#loginForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    gap: 5px;
+    background-color: goldenrod;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    width: 40%;
+    transition: transform 0.3s;
+    margin-top: 40px;
+}
+
+#loginForm:hover {
     transform: scale(1.2);
+}
+
+#registerForm {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    align-items: center;
+    gap: 5px;
+    background-color: goldenrod;
+    color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 1);
+    width: 40%;
+    transition: transform 0.3s;
+}
+
+#registerForm:hover {
+    transform: scale(1.2);
+}
+
+button {
+    border-radius: 5px;
+    border: 1px solid black;
+    margin-top: 10px;
 }
 
 footer {
