@@ -10,23 +10,42 @@ if(empty($_SESSION['user_id'])) {
     exit;
 }
 
-$input = json_decode(file_get_contents('php://input'), true);
-$note = $input['note'] ?? '';
+// Read JSON body
+$raw = file_get_contents('php://input');
+$input = json_decode($raw, true);
 
-// Check for empty note submission
-if($note === '') {
-    echo json_encode(['ok'=>false, 'error'=>'Note empty']);
+// Accept 'note' or 'text' for backwards compatibility
+$note = trim( (string) ($input['note'] ?? $input['text'] ?? '') );
+
+// Basic validation
+if ($note == '') {
+    http_response_code(400);
+    echo json_encode(['ok' => false, 'error' => 'Note empty']);
     exit;
 }
 
-$user_id = (int)$_SESSION['user_id'];
+$user_id = (int) $_SESSION['user_id'];
+
+// Prepare and execute insert
 $stmt = $db->prepare("INSERT INTO notes (user_id, note_text) VALUES (?, ?)");
+if ($stmt === false) {
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'DB connection failed: ' . $db->error]);
+    exit;
+}
 $stmt->bind_param('is', $user_id, $note);
 
-if($stmt->execute()) {
-    echo json_encode(['ok'=>true, 'note_id'=>$stmt->insert_id]);
+if ($stmt->execute()) {
+    $insertId = $stmt->insert_id;
+    $username = $_SESSION['username'] ?? '';
+    echo json_encode([
+        'ok' => true,
+        'note_id' => $insertId,
+        'username' => $username ?? ''
+    ]);
 } else {
-    echo json_encode(['ok'=>false, 'error'=>'Insert failed: '.$db->error]);
+    http_response_code(500);
+    echo json_encode(['ok' => false, 'error' => 'Insert failed: ' . $stmt->error]);
 }
 $stmt->close();
 $db->close();

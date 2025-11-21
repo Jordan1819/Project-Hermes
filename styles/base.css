@@ -72,7 +72,7 @@ body {
     border: 1px solid white;
 }
 
-#extraButtonSection {
+#lowerButtonSection {
     display: flex;
     margin-top: auto;
     justify-content: center;

@@ -34,7 +34,7 @@ if (!isset($_SESSION['user_id'])) {
         </section>
     </div>
     <!-- Logout button -->
-    <section id="extraButtonSection">
+    <section id="lowerButtonSection">
         <button id="btnLogout">Logout</button>
     </section>
     <footer>
