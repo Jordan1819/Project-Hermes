@@ -58,11 +58,11 @@ body {
     padding: 5px 15px;
 }
 
-#buttonSection button:hover {
+button:hover {
     transform: scale(1.2);
 }
 
-#btnLogout {
+button {
     background-color: goldenrod;
     padding: 5px 5px;
     color: white;
@@ -72,16 +72,14 @@ body {
     border: 1px solid white;
 }
 
+
 #lowerButtonSection {
     display: flex;
     margin-top: auto;
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-}
-
-#btnLogout:hover {
-    transform: scale(1.2);
+    gap: 10px;
 }
 
 footer {
@@ -91,4 +89,26 @@ footer {
     text-align: center;
     font-size: 0.8rem;
     padding: 0;
+}
+
+#resultsList {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+#resultsList li {
+    list-style: none;
+    width: 80%;
+}
+
+#results {
+    display: flex;
+    color: white;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    overflow-y: auto;
 }

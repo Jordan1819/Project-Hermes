@@ -39,6 +39,8 @@ btnSave.addEventListener('click', async function() {
         alert('Network or server error in saving note: ' + err.message);
     }
 
+    // Check if username is defined - if not, username='anonymous'
+    // Should always be defined because of login req
     const username = (typeof CURRENT_USERNAME !== 'undefined' && CURRENT_USERNAME) ? CURRENT_USERNAME : 'Anonymous';
 
     // Create payload for google doc apps script

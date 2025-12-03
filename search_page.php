@@ -1,10 +1,10 @@
 <?php
 session_start();
-// If user not logged in, redirect to login_form page
 if (!isset($_SESSION['user_id'])) {
     header('Location: login_form.php');
     exit;
 }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,36 +18,35 @@ if (!isset($_SESSION['user_id'])) {
     <link rel="icon" type="image/png" href="images/favicon.jpg">
 </head>
 <body>
-    <!-- Header section -->
+    <!-- Header -->
     <header><img src="images/favicon.jpg" alt="Hermes Logo" id="headerIconLeft">
     Project Hermes<span id="headerSubtitle">-Integrated Data Synchronization</span>
     <img src="images/faviconMirrored.jpg" alt="Hermes Logo" id="headerIconRight">
     </header>
-    <div id="mainContent">
-        <!-- Text area section -->
-        <section id="textSection">
-            <textarea id="mainTextArea" rows="20" cols="50" placeholder="Enter notes here..."></textarea>
-        </section>
-        <!-- Buttons section below textarea -->
-        <section id="buttonSection">
-            <button id="btnSave">Save</button>
-            <button id="btnClear">Clear</button>
-        </section>
+    <!-- Search controls -->
+    <h1 style="color:white;margin:20px auto;">Search Previous Notes</h1>
+    <div id="searchControlsWrapper" style="margin:5px;display:flex;align-items:center;flex-direction:column;flex:1;">
+        <div id="searchControls">
+            <input id="searchInput" type="search" placeholder="Enter keyword(s)" style="width:70%;" />
+            <button id="btnExecuteSearch">Search</button>
+        </div>
+        <div id="searchMsg" style="color:crimson;margin-top:8px;"></div>
     </div>
-    <!-- Logout & navigate to search page button -->
+    <!-- Results section -->
+    <section id="results">
+        <div id="resultsMeta"></div>
+        <ul id="resultsList" style="list-style:none;padding:5px;"></ul>
+    </section>
+    <!-- Lower buttons & footer -->
     <section id="lowerButtonSection">
         <button id="btnLogout">Logout</button>
-        <a href="search_page.php">
-            <button id="btnSearch">Search</button>
+        <a href="index.php">
+            <button id="btnHome">Home</button>
         </a>
     </section>
     <footer>
         <p>2025 Project Hermes - Built using XAMPP + PHP + MySQL - Jordan Waite</p>
     </footer>
-    <script>
-    // safe JSON encoding prevents XSS
-    const CURRENT_USERNAME = <?php echo json_encode($_SESSION['username'] ?? ''); ?>;
-    </script>
-    <script src="script.js"></script>
+    <script src="searchScript.js"></script>
 </body>
 </html>
