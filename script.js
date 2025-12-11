@@ -138,7 +138,7 @@ function toggleTheme() {
     const currentTheme = document.documentElement.getAttribute('data-theme');
     const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
 
-    // Apply new theme
+    // Apply current theme
     document.documentElement.setAttribute('data-theme', newTheme);
 
     // Save preference to cookie
