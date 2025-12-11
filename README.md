@@ -1,6 +1,6 @@
 # Project Hermes
 
-**Project Hermes** is a collaborative web application designed to make text-based data entry fast, reliable, and shareable. It allows users to enter text through a web interface and save their input simultaneously to both a **local SQL database** and **Google Sheets/Docs**, providing seamless synchronization between local storage and the cloud.
+**Project Hermes** is a collaborative web application designed to make text-based data entry fast, reliable, and shareable. With a simple, but secure user authentication system, it's a tool for teams to use in any text-based recordkeeping contexts. It allows users to enter text through a web interface and save their input simultaneously to both a **local SQL database** and **Google Sheets/Docs**, providing seamless synchronization between local storage and the cloud. Additionally, it allows verified users to search for and retrieve relevant database entries.
 
 ---
 
@@ -25,9 +25,3 @@
 | Version Control | Git + GitHub |
 
 ---
-
-## ⚙️ Setup & Installation
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/<your-username>/Project-Hermes.git
