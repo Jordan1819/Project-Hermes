@@ -42,10 +42,11 @@ async function executeSearch(query) {
         resultsMeta.textContent = `Found ${total} match${total !== 1 ? 'es' : ''}`;
 
 
+
         // For each note - create dynamic html list elements
         notes.forEach(n => {
             const li = document.createElement('li');
-            li.style.borderBottom = '1px solid black';
+            li.style.borderBottom = '1px solid white';
             li.style.color = 'white';
             li.style.marginBottom = '5px';
             // Metadata for note - username and date created
@@ -98,3 +99,65 @@ searchButton.addEventListener('click', () => {
 input.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') searchButton.click();
 });
+
+//------------Cookie Functions and Handling-------------------------
+// setCookie(): Set cookie name, value, and expiration
+function setCookie(name, value, days) {
+    const date = new Date();
+    date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+    const expires = "expires=" + date.toUTCString();
+    document.cookie = `${name}=${value}; ${expires}; path=/`;
+}
+
+// getCookie(): Retrieve cookie by name
+function getCookie(name) {
+    const cookieName = name + "=";
+    // Get all cookies as a single string
+    const decodedCookies = decodeURIComponent(document.cookie);
+    const cookies = decodedCookies.split(';');
+
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        // If cookie name found
+        if (cookie.indexOf(cookieName) === 0) {
+            // Return value associated with key
+            return cookie.substring(cookieName.length, cookie.length);
+        }
+    }
+    return null;
+}
+
+// -----------DOMContentLoaded Event Listener---------------------
+window.addEventListener('DOMContentLoaded', () => {
+    // Initialize theme from cookie
+    initializeTheme();
+});
+
+//------------Theme Toggle Functions-------------------------
+
+// Initialize theme on page load
+function initializeTheme() {
+    // Check for saved theme preference in cookie
+    const savedTheme = getCookie('theme') || 'light';
+
+    // Apply theme
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Set toggle state based on saved theme
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.checked = savedTheme === 'dark';
+    }
+}
+
+// Toggle theme function - called by checkbox onchange event
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    // Apply new theme
+    document.documentElement.setAttribute('data-theme', newTheme);
+
+    // Save preference to cookie
+    setCookie('theme', newTheme, 30);
+}

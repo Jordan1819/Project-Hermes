@@ -22,6 +22,19 @@ if (!isset($_SESSION['user_id'])) {
     <header><img src="images/favicon.jpg" alt="Hermes Logo" id="headerIconLeft">
     Project Hermes<span id="headerSubtitle">-Integrated Data Synchronization</span>
     <img src="images/faviconMirrored.jpg" alt="Hermes Logo" id="headerIconRight">
+
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-container">
+            <span class="theme-toggle-label">☀️</span>
+            <label class="theme-toggle">
+                <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
+                <span class="slider">
+                    <span class="slider-icon sun-icon"></span>
+                    <span class="slider-icon moon-icon"></span>
+                </span>
+            </label>
+            <span class="theme-toggle-label">🌙</span>
+        </div>
     </header>
     <div id="mainContent">
         <!-- Text area section -->

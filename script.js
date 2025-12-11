@@ -83,9 +83,10 @@ btnLogout.addEventListener('click', async () => {
 });
 
 // -----------DOMContentLoaded Event Listener---------------------
-//window.addEventListener('DOMContentLoaded', () => {
-
-//});
+window.addEventListener('DOMContentLoaded', () => {
+    // Initialize theme from cookie
+    initializeTheme();
+});
 
 
 //------------Cookie Functions and Handling-------------------------
@@ -113,4 +114,33 @@ function getCookie(name) {
         }
     }
     return null;
+}
+
+//------------Theme Toggle Functions-------------------------
+
+// Initialize theme on page load
+function initializeTheme() {
+    // Check for saved theme preference in cookie
+    const savedTheme = getCookie('theme') || 'light';
+
+    // Apply theme
+    document.documentElement.setAttribute('data-theme', savedTheme);
+
+    // Set toggle state based on saved theme
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.checked = savedTheme === 'dark';
+    }
+}
+
+// Toggle theme function - called by checkbox onchange event
+function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+    const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+    // Apply new theme
+    document.documentElement.setAttribute('data-theme', newTheme);
+
+    // Save preference to cookie
+    setCookie('theme', newTheme, 30);
 }
