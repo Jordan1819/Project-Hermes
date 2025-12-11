@@ -14,7 +14,7 @@
     --footer-bg: goldenrod;
     --footer-text: white;
 }
-
+/* Properties for dark theme */
 [data-theme="dark"] {
     --bg-gradient-start: #1a1a2e;
     --bg-gradient-end: #0f0f1e;
@@ -24,7 +24,7 @@
     --text-color: #e0e0e0;
     --textarea-bg: #2a2a3e;
     --textarea-text: #e0e0e0;
-    --button-bg: #d4a017;
+    --button-bg: #3c0742;
     --button-text: white;
     --button-border: #555;
     --footer-bg: #2d2d44;
@@ -60,11 +60,13 @@ header {
 #headerIconLeft {
     height: 30px;
     width: auto;
+    border-radius: 5px;
 }
 
 #headerIconRight {
     height: 30px;
     width: auto;
+    border-radius: 5px;
 }
 
 body {
@@ -126,7 +128,7 @@ button {
     justify-content: center;
     align-items: center;
     margin-bottom: 10px;
-    gap: 10px;
+    gap: 20px;
 }
 
 footer {

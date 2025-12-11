@@ -105,6 +105,8 @@ document.getElementById('btnRegister').addEventListener('click', async () => {
     } catch (err) {
         msg.textContent = err.message;
     }
+    document.getElementById('registerUsername').value = '';
+    document.getElementById('registerPassword').value = '';
 });
 </script>
 </body>

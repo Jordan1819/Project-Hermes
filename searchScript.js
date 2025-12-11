@@ -14,6 +14,7 @@ async function executeSearch(query) {
     resultsList.innerHTML = '';
     resultsMeta.textContent = 'Searching...';
 
+    // AJAX - asynchronous HTTP request to server
     try {
         const res = await fetch('server/search_notes.php', {
             method: 'POST',
@@ -43,7 +44,7 @@ async function executeSearch(query) {
 
 
 
-        // For each note - create dynamic html list elements
+        // For each note - create list elements w/o updating page
         notes.forEach(n => {
             const li = document.createElement('li');
             li.style.borderBottom = '1px solid white';

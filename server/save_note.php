@@ -14,7 +14,7 @@ if(empty($_SESSION['user_id'])) {
 $raw = file_get_contents('php://input');
 $input = json_decode($raw, true);
 
-// Accept 'note' or 'text' for backwards compatibility
+// Accept 'note' or 'text'
 $note = trim( (string) ($input['note'] ?? $input['text'] ?? '') );
 
 // Basic validation
